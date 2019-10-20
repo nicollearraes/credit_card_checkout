@@ -14,7 +14,9 @@
       </form>
 
       <!-- confirmation -->
-      <div v-if="currentPage === 'confirmation'">Success!</div>
+      <div v-if="currentPage === 'confirmation'">
+        <p>success!</p>
+      </div>
     </div>
   </div>
 </template>

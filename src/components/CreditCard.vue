@@ -3,7 +3,7 @@
     <div class="cc-information">
       <div class="cc cc-1" :class="{ 'is-error': $v.name.$dirty && $v.name.$invalid }">
         <label>Name</label>
-        <input type="text" v-model.trim="$v.name.$model" />
+        <input type="text" name="name" v-model.trim="$v.name.$model" />
       </div>
     </div>
     <div class="cc-information">
@@ -11,6 +11,7 @@
         <label>card number</label>
         <input
           type="text"
+          name="cc_number"
           v-mask="'#### - #### - #### - ####'"
           v-model.trim="$v.cc_number.$model"
           size="25"
@@ -18,18 +19,31 @@
       </div>
       <div class="cc cc-2" :class="{ 'is-error': $v.exp_date.$dirty &&  $v.exp_date.$invalid }">
         <label>MM / YY</label>
-        <input type="text" v-mask="'## / ##'" v-model.trim="$v.exp_date.$model" size="7" />
+        <input
+          type="text"
+          name="exp_date"
+          v-mask="'## / ##'"
+          v-model.trim="$v.exp_date.$model"
+          size="7"
+        />
       </div>
       <div class="cc cc-3" :class="{ 'is-error': $v.ccv.$dirty &&  $v.ccv.$invalid }">
         <label>CVV</label>
-        <input type="password" v-mask="'###'" v-model.trim="$v.ccv.$model" maxlength="3" size="3" />
+        <input
+          type="password"
+          name="cvv"
+          v-mask="'###'"
+          v-model.trim="$v.ccv.$model"
+          maxlength="3"
+          size="3"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { required, between, minLength } from "vuelidate/lib/validators";
+import { required, minLength } from "vuelidate/lib/validators";
 
 export default {
   name: "CreditCard",
